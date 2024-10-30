@@ -11,7 +11,7 @@
     </form>
 
     <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_POST) {
         $number = $_POST['number'];
 
         function isArmstrong($number) {
