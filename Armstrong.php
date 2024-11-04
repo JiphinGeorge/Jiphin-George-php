@@ -1,37 +1,31 @@
 <html>
-<head>
-    <title>Armstrong Number Checker</title>
-</head>
 <body>
-    <h1>Armstrong Number Checker</h1>
-    <form method="POST" action="">
-        <label for="number">Enter a number:</label>
-        <input type="number" id="number" name="number" required>
-        <input type="submit" value="Check">
-    </form>
-
-    <?php
-    if ($_POST) {
-        $number = $_POST['number'];
-
-        function isArmstrong($number) {
-            $digits = str_split($number);
-            $numDigits = count($digits);
-            $sum = 0;
-
-            foreach ($digits as $digit) {
-                $sum += pow($digit, $numDigits);
-            }
-
-            return $sum == $number;
-        }
-
-        if (isArmstrong($number)) {
-            echo "<p>$number is an Armstrong number.</p>";
-        } else {
-            echo "<p>$number is not an Armstrong number.</p>";
-        }
-    }
-    ?>
+<form method="post">
+Enter the number:
+<input type="number" name="number">
+<input type="submit" name="Submit">
+</form>
 </body>
 </html>
+<?php
+ if($_POST)
+ {
+   $number=$_POST['number'];
+   $a=$number;
+   $sum=0;
+   while($a!=0)
+   {
+     $rem=$a%10;
+     $sum=$sum+($rem*$rem*$rem);
+     $a=$a/10;
+   }
+   if($number==$sum)
+   {
+     echo "Yes $number an Armstrong Number";
+   }
+   else
+   {
+     echo "$number is not an Armstrong Number";
+   }
+  }
+?>
