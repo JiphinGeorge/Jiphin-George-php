@@ -47,6 +47,7 @@
         <input type="email" id="email" name="email" required>
 
         <input type="submit" value="Submit">
+        
     </form>
 
     <?php

@@ -2,7 +2,7 @@
 <head>
     <title>Fibonacci Series Generator</title> 
 </head>
-<body>
+<body><CENTER>
     <h1>Fibonacci Series Generator</h1> 
     <form method="POST"> 
         <label for="limit">Enter a number:</label> 
@@ -35,5 +35,6 @@
             echo implode(", ", $series); 
         }
     ?>
+    </CENTER>
 </body>
 </html>

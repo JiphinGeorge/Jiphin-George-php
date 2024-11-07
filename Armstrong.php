@@ -1,11 +1,12 @@
-<html>
-<body>
+<CENTER>
+<body><CENTER>
+  <h1>ARMSTRONG NUMBER</h1>
 <form method="post">
 Enter the number:
 <input type="number" name="number">
 <input type="submit" name="Submit">
 </form>
-</body>
+</body></CENTER>
 </html>
 <?php
  if($_POST)

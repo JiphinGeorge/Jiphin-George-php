@@ -1,51 +1,50 @@
 <?php
-$target_dir = "Upload/";
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION));
+// Define the target directory where the uploaded files will be stored
+$targetDirectory = "uploads/";
 
-// Check if file was uploaded without errors
-if ($_FILES["fileToUpload"]["error"] != 0) {
-    echo "Error: " . $_FILES["fileToUpload"]["error"];
-    $uploadOk = 0;
+// Ensure the target directory exists
+if (!is_dir($targetDirectory)) {
+    mkdir($targetDirectory, 0777, true); // Create the directory if it doesn't exist
 }
 
-// Check if file is an image
+// Define the target file path
+$targetFile = $targetDirectory . basename($_FILES["fileToUpload"]["name"]);
+
+// Flag to check if there are errors
+$uploadOk = 1;
+
+// Check if the file is an actual image or not (optional)
 if (isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if ($check !== false) {
-        echo "File is an image - " . $check["mime"] . ".<br>";
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.<br>";
+    // Check if the file is a valid upload
+    if ($_FILES["fileToUpload"]["error"] !== UPLOAD_ERR_OK) {
+        echo "Error uploading file.";
         $uploadOk = 0;
     }
 }
 
-// Limit allowed file types (only image files)
-$allowedTypes = ['jpg', 'jpeg', 'png', 'gif'];
-if (!in_array($imageFileType, $allowedTypes)) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.<br>";
+// Check file size (limit to 5MB in this case)
+if ($_FILES["fileToUpload"]["size"] > 5000000) { // 5MB limit
+    echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
 
-// Limit file size to 5MB
-if ($_FILES["fileToUpload"]["size"] > 5000000) { // 5MB
-    echo "Sorry, your file is too large.<br>";
+// Allow certain file formats (optional)
+$fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+$allowedTypes = array("jpg", "jpeg", "png", "gif", "pdf", "docx", "txt");
+if (!in_array($fileType, $allowedTypes)) {
+    echo "Sorry, only JPG, JPEG, PNG, GIF, PDF, DOCX, and TXT files are allowed.";
     $uploadOk = 0;
 }
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.<br>";
+    echo "Sorry, your file was not uploaded.";
 } else {
-    // Generate a unique file name to avoid overwriting
-    $target_file = $target_dir . uniqid('img_', true) . "." . $imageFileType;
-
-    // Try to upload file
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file has been uploaded to: " . $target_file . "<br>";
+    // Try to upload the file
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
+        echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
     } else {
-        echo "Sorry, there was an error uploading your file.<br>";
+        echo "Sorry, there was an error uploading your file.";
     }
 }
 ?>
