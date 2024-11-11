@@ -1,4 +1,9 @@
 <html>
+    <head>
+        <title>
+            Array Operations
+        </title>
+    </head>
 <body><center>
     <h1>Array Operations</h1>
     <form action="" method="post">

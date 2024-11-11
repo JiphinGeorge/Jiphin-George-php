@@ -1,27 +1,73 @@
 <html>
-<body>
-input the number : <input type="text" id="num">
-<br><br>
-enter the limit : <input type="text" id="limit">
-<br><br>
-<button onClick = "table()">GO</button>
-<p id = "disp"></p>
+<head>
+    <title>Multiplication Table Generator</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #content {
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #disp {
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-<script>
-function table()
-{
-var num = document.getElementById("num").value;
-var limit = document.getElementById("limit").value;
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange=function(){
-if(this.readyState==4 && this.status==200)
-{
-document.getElementById("disp").innerHTML = this.responseText;
-}
-};
-xhttp.open("GET", "table.php?num="+num+"&limit="+limit, true);
-xhttp.send();
-}
-</script>
+        input[type="text"] {
+            width: 150px;
+            padding: 5px;
+            margin: 5px;
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            align-self: center;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Multiplication Table Generator</h2>
+
+    <div id="content">
+        <div>
+            <label for="num">Input the number: </label>
+            <input type="text" id="num">
+        </div>
+        <br><br>
+        <div>
+            <label for="limit">Enter the limit: </label>
+            <input type="text" id="limit">
+        </div>
+        <br><br>
+        <button onClick="table()">GO</button>
+        <p id="disp"></p>
+    </div>
+
+    <script>
+        function table() {
+            var num = document.getElementById("num").value;
+            var limit = document.getElementById("limit").value;
+            if (isNaN(num) || isNaN(limit) || num === "" || limit === "") {
+                document.getElementById("disp").innerHTML = "Please enter valid numbers.";
+                return;
+            }
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("disp").innerHTML = this.responseText;
+                }
+            };
+            xhttp.open("GET", "table.php?num=" + num + "&limit=" + limit, true);
+            xhttp.send();
+        }
+    </script>
 </body>
 </html>

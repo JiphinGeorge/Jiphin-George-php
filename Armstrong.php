@@ -1,5 +1,5 @@
 <CENTER>
-<body><CENTER>
+<body>
   <h1>ARMSTRONG NUMBER</h1>
 <form method="post">
 Enter the number:
