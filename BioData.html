@@ -46,7 +46,7 @@
 <body>
     <h1>Personal Biodata Form</h1>
     <div class="form-container">
-        <form method="POST" action="">
+        <form method="POST" action="Biodisplay.php">
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" required>
 
@@ -96,36 +96,5 @@
             </div>
         </form>
     </div>
-
-    <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $name = htmlspecialchars($_POST['name']);
-        $dob = htmlspecialchars($_POST['dob']);
-        $age = htmlspecialchars($_POST['age']);
-        $gender = htmlspecialchars($_POST['gender']);
-        $address = htmlspecialchars($_POST['address']);
-        $email = htmlspecialchars($_POST['email']);
-        $phone = htmlspecialchars($_POST['phone']);
-        $nationality = htmlspecialchars($_POST['nationality']);
-        $marital_status = htmlspecialchars($_POST['marital_status']);
-        $hobbies = htmlspecialchars($_POST['hobbies']);
-        $education = htmlspecialchars($_POST['education']);
-        $father_name = htmlspecialchars($_POST['father_name']);
-      
-        echo "<h2>Biodata</h2>";
-        echo "<p><strong>Name:</strong> $name</p>";
-        echo "<p><strong>Date of Birth:</strong> $dob</p>";
-        echo "<p><strong>Age:</strong> $age</p>";
-        echo "<p><strong>Gender:</strong> $gender</p>";
-        echo "<p><strong>Educational Qualification:</strong> $education</p>";
-        echo "<p><strong>Father's Name:</strong> $father_name</p>";
-        echo "<p><strong>Address:</strong> $address</p>";
-        echo "<p><strong>Email:</strong> $email</p>";
-        echo "<p><strong>Phone Number:</strong> $phone</p>";
-        echo "<p><strong>Nationality:</strong> $nationality</p>";
-        echo "<p><strong>Marital Status:</strong> $marital_status</p>";
-        echo "<p><strong>Hobbies:</strong> $hobbies</p>";
-    }
-    ?>
 </body>
 </html>
