@@ -1,3 +1,9 @@
+<html>
+  <head>
+    <title>
+       Armstrong
+    </title>
+  </head>
 <CENTER>
 <body>
   <h1>ARMSTRONG NUMBER</h1>
