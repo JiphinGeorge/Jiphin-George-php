@@ -29,10 +29,8 @@
             $limit = $_POST['limit']; 
             function fibonacci($limit) {
                 $fib = [0, 1];
-                
                 while (true) { 
                     $next = $fib[count($fib) - 1] + $fib[count($fib) - 2];
-                    
                     if ($next > $limit) {
                         break;
                     }
@@ -41,7 +39,6 @@
                 
                 return $fib; 
             }
-            
             $series = fibonacci($limit);
             echo "<div class='output'>";
             echo "<h2>Fibonacci Series up to $limit:</h2>"; 

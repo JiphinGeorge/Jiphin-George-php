@@ -33,7 +33,7 @@
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Fetching and sanitizing form data
             $name = htmlspecialchars($_POST['name']);
-            $dob = htmlspecialchars($_POST['dob']);
+            $dob = htmlspecialchars($_POST['dob']); 
             $age = htmlspecialchars($_POST['age']);
             $gender = htmlspecialchars($_POST['gender']);
             $address = htmlspecialchars($_POST['address']);
